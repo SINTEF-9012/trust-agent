@@ -1,0 +1,26 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - iot
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+  
+  telegraf:
+    image: rdautov:trust-agent
+    container_name: trust-agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    depends_on:
+      - mosquitto
+    networks:
+      - iot
+
+networks:
+  iot:
