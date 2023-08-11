@@ -14,10 +14,10 @@ services:
   telegraf:
     image: rdautov/trust-agent:0.1
     container_name: trust-agent
-    privileged: true
-    user: root 
+    # privileged: true
+    # user: root 
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     depends_on:
       - mosquitto
