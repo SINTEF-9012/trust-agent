@@ -12,15 +12,17 @@ services:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
   
   telegraf:
-    image: rdautov:trust-agent
+    image: rdautov/trust-agent:0.1
     container_name: trust-agent
+    privileged: true
+    user: root 
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: always
     depends_on:
       - mosquitto
     networks:
-      - iot
+      - iot 
 
 networks:
   iot:
