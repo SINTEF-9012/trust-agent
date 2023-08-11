@@ -18,6 +18,7 @@ services:
     # user: root 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/dpkg/:/var/lib/dpkg/
     restart: always
     depends_on:
       - mosquitto
