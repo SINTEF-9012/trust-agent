@@ -14,7 +14,7 @@ services:
   telegraf:
     image: rdautov/trust-agent:0.1
     container_name: trust-agent
-    # privileged: true
+    privileged: true
     # user: root 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
